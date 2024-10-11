@@ -3,20 +3,22 @@
 
 import {VDomRenderer} from '@jupyterlab/ui-components';
 import * as React from 'react';
+import { createContext } from 'react';
 // import { TableOfContentsTree } from './toctree';
 import {TableOfContents} from './tokens';
 import {Button, Input} from './components/index'
 import {ButtonProps} from "./components/types";
+// import './utils/antd.min.js';
+// @ts-ignore
 
-console.info('******8antd:', antd);
-
+const { Modal } = antd;
+const [modal] = Modal.useModal();
 
 const getFileType = (fileName: string) => {
     // 使用正则表达式提取扩展名
     const match = fileName.match(/\.([a-zA-Z0-9]+)$/);
     return match ? match[1] : null; // 返回扩展名，或者返回 null 如果没有找到
 }
-
 
 const WorkFileList: React.FC<ButtonProps> = () => {
     let currentIndex: number = -1;
@@ -58,6 +60,19 @@ const WorkFileList: React.FC<ButtonProps> = () => {
     )
 }
 
+const ReachableContext = createContext<string | null>(null);
+const UnreachableContext = createContext<string | null>(null);
+const config = {
+    title: 'Use Hook!',
+    content: (
+        <>
+            <ReachableContext.Consumer>{(name) => `Reachable: ${name}!`}</ReachableContext.Consumer>
+            <br />
+            <UnreachableContext.Consumer>{(name) => `Unreachable: ${name}!`}</UnreachableContext.Consumer>
+        </>
+    ),
+};
+
 /**
  * Table of contents widget.
  */
@@ -74,6 +89,12 @@ export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<T
     }
 
     handleSearch(): void { // todo 搜索
+    }
+
+
+
+    commitWork(): void {
+        modal.confirm(config);
     }
 
 
@@ -101,7 +122,7 @@ export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<T
                             <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4ee0k6w.png'/>
                         </div>
                     </div>
-                    <div className='action-commit'>提交作业</div>
+                    <div className='action-commit' onClick={ this.commitWork }>提交作业</div>
                 </div>
                 <div className='search_layout'>
                     <Input placeholder={'请输入名称搜索'}>

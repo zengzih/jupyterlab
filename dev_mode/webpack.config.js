@@ -275,6 +275,8 @@ if (process.argv.includes('--analyze')) {
   plugins.push(new BundleAnalyzerPlugin());
 }
 
+console.info('--------webpack.config.js--------')
+
 module.exports = [
   merge(baseConfig, {
     mode: 'development',
@@ -309,12 +311,7 @@ module.exports = [
     },
     devtool: 'inline-source-map',
     externals: ['ws', 'alias'],
-    plugins,
-    resolve: {
-      alias: {
-        'antd': path.resolve(__dirname, './antdesign/index.min.js')
-      }
-    }
+    plugins
   })
 ].concat(extensionAssetConfig);
 

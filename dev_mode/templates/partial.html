@@ -8,8 +8,17 @@
 
 {# Set a dummy variable - we just want the side effect of the update. #}
 {% set _ = page_config_full.update(baseUrl=base_url, wsUrl=ws_url) %}
+  <link href="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css" rel="stylesheet">
 
-  <script id="jupyter-config-data" type="application/json">
+  <!-- 引入 React 和 ReactDOM -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs/dayjs.min.js"></script>
+<!-- React 18 -->
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- 引入 Ant Design 的 JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.js"></script>
+  <script id="jupyter-config-data" data-action="jupyter-config-data" type="application/json">
     {{ page_config_full | tojson }}
   </script>
 
