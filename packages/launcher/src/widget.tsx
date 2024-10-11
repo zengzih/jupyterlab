@@ -102,6 +102,21 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
     this._pending = value;
   }
 
+  private renderIconImgElement(icon: any): React.ReactElement<any> | null {
+    const { name } = icon;
+    const imgsMap: any = {
+      "ui-components:notebook": 'https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f1pe0es1.png',
+      "ui-components:console": 'https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f1pe0es1.png',
+      "ui-components:terminal": 'https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f1pe0es1.png'
+    }
+    return (
+      <div className='custom_jp-Icon-cover'>
+        <img src={ imgsMap[name] } alt="" />
+      </div>
+    )
+  }
+
+
   /**
    * Render the launcher to virtual DOM nodes.
    */
@@ -163,20 +178,23 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
       const item = categories[cat][0] as ILauncher.IItemOptions;
       const args = { ...item.args, cwd: this.cwd };
       const kernel = kernelCategories.indexOf(cat) > -1;
-      const iconClass = this._commands.iconClass(item.command, args);
+      // const iconClass = this._commands.iconClass(item.command, args);
       const icon = this._commands.icon(item.command, args);
 
       if (cat in categories) {
         section = (
           <div className="jp-Launcher-section" key={cat}>
             <div className="jp-Launcher-sectionHeader">
-              <LabIcon.resolveReact
+              {/* <LabIcon.resolveReact
                 icon={icon}
                 iconClass={classes(iconClass, 'jp-Icon-cover')}
                 stylesheet="launcherSection"
                 aria-hidden="true"
-              />
-              <h2 className="jp-Launcher-sectionTitle">{cat}</h2>
+              /> */}
+              <div className='jp-Launcher-sectionHeader_content'>
+              { this.renderIconImgElement(icon) }
+              <span className="jp-Launcher-sectionTitle">{cat}</span>
+              </div>
             </div>
             <div className="jp-Launcher-cardContainer">
               {Array.from(
@@ -203,7 +221,7 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
       <div className="jp-Launcher-body">
         <div className="jp-Launcher-content">
           <div className="jp-Launcher-cwd">
-            <h3>{this.cwd}</h3>
+            {/* <h3>{this.cwd}</h3> */}
           </div>
           {sections}
         </div>

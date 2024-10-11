@@ -13,10 +13,14 @@
 
 .jp-ThemedContainer {
   font-family: var(--jp-ui-font-family);
-  background: var(--jp-layout-color3);
+  background: #f0f2f5 !important;
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+.jp-ThemedContainer .lm-SplitPanel-handle::after {
+  background: #f0f2f5 !important;
 }
 
 .jp-LabShell {

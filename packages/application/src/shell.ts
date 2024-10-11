@@ -409,7 +409,12 @@ export class LabShell extends Widget implements JupyterFrontEnd.IShell {
     SplitPanel.setStretch(vsplitPanel, 1);
 
     hsplitPanel.addWidget(leftHandler.stackedPanel);
-    hsplitPanel.addWidget(dockPanel);
+
+    const containerPanel = new Panel();
+    containerPanel.addClass('right_dock_panel-container');
+    containerPanel.addWidget(dockPanel)
+
+    hsplitPanel.addWidget(containerPanel);
     hsplitPanel.addWidget(rightHandler.stackedPanel);
 
     vsplitPanel.addWidget(hsplitPanel);

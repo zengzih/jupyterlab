@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfigbase.test",
-  "include": ["src/*", "test/**/*"],
+  "include": [
+    "src/*",
+    "test/**/*"
+  ],
   "references": [
     {
       "path": "../application"
@@ -280,6 +283,12 @@
     },
     {
       "path": "../ui-components-extension"
+    },
+    {
+      "path": "../user"
+    },
+    {
+      "path": "../user-extension"
     },
     {
       "path": "../vega5-extension"

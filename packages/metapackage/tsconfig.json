@@ -4,7 +4,9 @@
     "outDir": "lib",
     "rootDir": "src"
   },
-  "include": ["src/*"],
+  "include": [
+    "src/*"
+  ],
   "references": [
     {
       "path": "../application"
@@ -284,6 +286,12 @@
     },
     {
       "path": "../ui-components-extension"
+    },
+    {
+      "path": "../user"
+    },
+    {
+      "path": "../user-extension"
     },
     {
       "path": "../vega5-extension"

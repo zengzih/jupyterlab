@@ -308,8 +308,13 @@ module.exports = [
       ]
     },
     devtool: 'inline-source-map',
-    externals: ['ws'],
-    plugins
+    externals: ['ws', 'alias'],
+    plugins,
+    resolve: {
+      alias: {
+        'antd': path.resolve(__dirname, './antdesign/index.min.js')
+      }
+    }
   })
 ].concat(extensionAssetConfig);
 
