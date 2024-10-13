@@ -15,18 +15,34 @@
   font-weight: 400;
   white-space: nowrap;
   text-align: center;
-  border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   user-select: none;
   touch-action: manipulation;
-  color: #fff;
   font-size: 14px;
   line-height: 36px;
   height: 36px;
   padding: 8px 26px;
-  background: #1564ff;
   border-radius: 5px;
+  background: #fff;
+  color: #333;
+  border: 1px solid #dbdbdb;
+}
+.com-btn .ant-btn:hover {
+  color: #005ae0;
+  border-color: #005ae0;
+}
+.com-btn .ant-btn.primary {
+  background: #1564ff;
+  color: #fff;
+  border: 1px solid transparent;
+}
+.com-btn .ant-btn:active {
+  color: #005ae0;
+  border-color: #005ae0;
+}
+.com-btn + .com-btn {
+  margin-left: 16px;
 }
 .com-input input {
   width: 100%;

@@ -176,6 +176,8 @@ export namespace TableOfContents {
      * Whether the heading is marked to skip or not
      */
     skip?: boolean;
+
+    _visible?: boolean;
   }
 
   /**

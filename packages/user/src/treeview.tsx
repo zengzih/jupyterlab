@@ -2,17 +2,13 @@
 // Distributed under the terms of the Modified BSD License.
 
 import {VDomRenderer} from '@jupyterlab/ui-components';
-import * as React from 'react';
-import { createContext } from 'react';
+import React, {useState} from 'react';
 // import { TableOfContentsTree } from './toctree';
 import {TableOfContents} from './tokens';
-import {Button, Input} from './components/index'
+import {Button, Input} from './components'
 import {ButtonProps} from "./components/types";
-// import './utils/antd.min.js';
-// @ts-ignore
-
-const { Modal } = antd;
-const [modal] = Modal.useModal();
+import { MessageBox } from './components/messageBox';
+import { Dialog } from './components/dialog'
 
 const getFileType = (fileName: string) => {
     // 使用正则表达式提取扩展名
@@ -60,22 +56,72 @@ const WorkFileList: React.FC<ButtonProps> = () => {
     )
 }
 
-const ReachableContext = createContext<string | null>(null);
-const UnreachableContext = createContext<string | null>(null);
-const config = {
-    title: 'Use Hook!',
-    content: (
-        <>
-            <ReachableContext.Consumer>{(name) => `Reachable: ${name}!`}</ReachableContext.Consumer>
-            <br />
-            <UnreachableContext.Consumer>{(name) => `Unreachable: ${name}!`}</UnreachableContext.Consumer>
-        </>
-    ),
-};
 
 /**
  * Table of contents widget.
  */
+
+const RenderWorkList = ()=> {
+    const [visible, setVisible] = useState(false);
+    const [dialogVisible, setDialogVisible] = useState(false);
+
+    const handleSearch = () => { // todo 搜索
+    }
+
+    const handleCommit = ()=> {
+        // setVisible(true);
+        setDialogVisible(true);
+    };
+
+    const handleMessageBoxClose = () => {
+        setVisible(false);
+    };
+
+    const handleMessageBoxConfirm = () => {
+        setVisible(false);
+    };
+    return (
+        <div className='user_panel-container'>
+            <div className='actions'>
+                <div className='actions-items'>
+                    <div className='item btn'>
+                        <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f0ah01p5.png' />
+                    </div>
+                    <div className='item img'>
+                        <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f35b0twi.png'/>
+                    </div>
+                    <div className='item img'>
+                        <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4lx0yv3.png'/>
+                    </div>
+                    <div className='item img'>
+                        <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4ee0k6w.png'/>
+                    </div>
+                </div>
+                <div className='action-commit' onClick={ handleCommit }>提交作业</div>
+            </div>
+            <div className='search_layout'>
+                <Input placeholder={'请输入名称搜索'}>
+                    <img className='input-search_icon' src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4l406mo.png' />
+                </Input>
+                <Button type={'primary'} onClick={ handleSearch }>搜索</Button>
+            </div>
+            <div className='work-paths'></div>
+            <div className='work-header'>
+                <span>Name</span>
+                <span>Modify</span>
+            </div>
+            <WorkFileList/>
+            <MessageBox message={ '这是描述信息' } visible={ visible }>
+                <Button onClick={ handleMessageBoxClose }>取消</Button>
+                <Button type='primary' onClick={ handleMessageBoxConfirm }>确认</Button>
+            </MessageBox>
+            <Dialog visible={ dialogVisible } title={'选择提交作业路径'}>
+
+            </Dialog>
+        </div>
+    )
+}
+
 export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<TableOfContents.IHeading> | null> {
     /**
      * Constructor
@@ -88,56 +134,23 @@ export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<T
         this._placeholderText = options.placeholderText;
     }
 
-    handleSearch(): void { // todo 搜索
+    /*handleSearch(): void { // todo 搜索
     }
-
-
 
     commitWork(): void {
-        modal.confirm(config);
+        this.visible = true;
     }
 
+    handleMessageBoxClose() {
+        this.visible = false;
+    }
 
-    /**
-     * Render the content of this widget using the virtual DOM.
-     *
-     * This method will be called anytime the widget needs to be rendered, which
-     * includes layout triggered rendering.
-     */
+    handleMessageBoxConfirm() {
+
+    }*/
+
     render(): JSX.Element | null {
-        return (
-            <div className='user_panel-container'>
-                <div className='actions'>
-                    <div className='actions-items'>
-                        <div className='item btn'>
-                            <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f0ah01p5.png' />
-                        </div>
-                        <div className='item img'>
-                            <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f35b0twi.png'/>
-                        </div>
-                        <div className='item img'>
-                            <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4lx0yv3.png'/>
-                        </div>
-                        <div className='item img'>
-                            <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4ee0k6w.png'/>
-                        </div>
-                    </div>
-                    <div className='action-commit' onClick={ this.commitWork }>提交作业</div>
-                </div>
-                <div className='search_layout'>
-                    <Input placeholder={'请输入名称搜索'}>
-                        <img className='input-search_icon' src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4l406mo.png' />
-                    </Input>
-                    <Button onClick={this.handleSearch}>搜索</Button>
-                </div>
-                <div className='work-paths'></div>
-                <div className='work-header'>
-                    <span>Name</span>
-                    <span>Modify</span>
-                </div>
-                <WorkFileList/>
-            </div>
-        )
+        return <RenderWorkList />
     }
 
     readonly _placeholderHeadline: string;

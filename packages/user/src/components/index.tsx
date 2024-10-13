@@ -2,13 +2,13 @@ import React from 'react';
 import {ButtonProps, InputProps} from "./types";
 
 
-export const Button: React.FC<ButtonProps> = ({children, onClick}) => {
+export const Button: React.FC<ButtonProps> = ({children, type, onClick}) => {
     return (
         <div className="com-btn">
             <button
                 onClick={onClick}
                 type="button"
-                className="ant-btn css-var-r38c ant-btn-primary ant-btn-solid">
+                className={ `ant-btn ant-btn-solid ${type}` }>
                 <span>{children}</span>
             </button>
         </div>
