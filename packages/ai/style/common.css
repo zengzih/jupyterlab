@@ -1,0 +1,36 @@
+.com-btn .ant-btn {
+  outline: none;
+  position: relative;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+  color: #fff;
+  font-size: 14px;
+  line-height: 36px;
+  height: 36px;
+  padding: 8px 26px;
+  background: #1564ff;
+  border-radius: 5px;
+}
+
+.com-input input {
+  width: 100%;
+  height: 36px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #e0e1e3;
+  font-size: inherit;
+  outline: none;
+  color: inherit;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
