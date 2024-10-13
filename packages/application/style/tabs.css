@@ -99,13 +99,17 @@
 
 /* This is a current tab of a tab bar in the dock panel: each tab bar has 1. */
 .lm-DockPanel-tabBar .lm-TabBar-tab.lm-mod-current {
-  background: var(--jp-layout-color1);
-  color: var(--jp-ui-font-color1);
+  /*background: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);*/
+  background: #e5edfa;
+  color: #1564ff;
 }
 
 .lm-TabPanel-tabBar .lm-TabBar-tab.lm-mod-current {
-  background: var(--jp-layout-color1);
-  color: var(--jp-ui-font-color1);
+  /*background: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);*/
+  background: #e5edfa;
+  color: #1564ff;
 }
 
 /* This is the main application level current tab: only 1 exists. */
@@ -121,8 +125,10 @@
 
 /* This is the left tab bar current tab: only 1 exists. */
 .lm-TabBar-tab.lm-mod-current {
-  background: var(--jp-layout-color1);
-  color: var(--jp-ui-font-color1);
+  /*background: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);*/
+  background: #e5edfa;
+  color: #1564ff;
 }
 
 .lm-DockPanel-tabBar .lm-TabBar.lm-mod-left .lm-TabBar-tab,
