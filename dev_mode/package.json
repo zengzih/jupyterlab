@@ -23,6 +23,8 @@
     "@jupyter/react-components": "^0.16.6",
     "@jupyter/web-components": "^0.16.6",
     "@jupyter/ydoc": "^3.0.0-a3",
+    "@jupyterlab/ai": "~6.3.0-beta.3",
+    "@jupyterlab/ai-extension": "~6.3.0-beta.3",
     "@jupyterlab/application": "~4.3.0-beta.3",
     "@jupyterlab/application-extension": "~4.3.0-beta.3",
     "@jupyterlab/apputils": "~4.4.0-beta.3",
@@ -147,6 +149,7 @@
     "yjs": "^13.5.40"
   },
   "dependencies": {
+    "@jupyterlab/ai-extension": "~6.3.0-beta.3",
     "@jupyterlab/application": "~4.3.0-beta.3",
     "@jupyterlab/application-extension": "~4.3.0-beta.3",
     "@jupyterlab/apputils-extension": "~4.3.0-beta.3",
@@ -231,6 +234,7 @@
     "name": "JupyterLab",
     "version": "4.3.0b3",
     "extensions": {
+      "@jupyterlab/ai-extension": "",
       "@jupyterlab/application-extension": "",
       "@jupyterlab/apputils-extension": "",
       "@jupyterlab/cell-toolbar-extension": "",
@@ -293,6 +297,7 @@
       "@jupyter/react-components",
       "@jupyter/web-components",
       "@jupyter/ydoc",
+      "@jupyterlab/ai",
       "@jupyterlab/application",
       "@jupyterlab/apputils",
       "@jupyterlab/cell-toolbar",
@@ -357,6 +362,8 @@
       "yjs"
     ],
     "linkedPackages": {
+      "@jupyterlab/ai": "../packages/ai",
+      "@jupyterlab/ai-extension": "../packages/ai-extension",
       "@jupyterlab/application": "../packages/application",
       "@jupyterlab/application-extension": "../packages/application-extension",
       "@jupyterlab/apputils": "../packages/apputils",
