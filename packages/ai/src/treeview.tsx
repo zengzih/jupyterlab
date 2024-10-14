@@ -2,7 +2,7 @@
 // Distributed under the terms of the Modified BSD License.
 
 import {VDomRenderer} from '@jupyterlab/ui-components';
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { TableOfContentsTree } from './toctree';
 import {TableOfContents} from './tokens';
 // import Prism from 'prismjs';
@@ -10,10 +10,11 @@ import {TableOfContents} from './tokens';
 // import 'prismjs/components/prism-python';
 // import {Button, Input} from './components'
 
-/*const MindChat = (): JSX.Element | null =>  {
+const MindChat = (): JSX.Element | null =>  {
     useEffect(() => {
         // 在组件挂载后，进行代码高亮
-        // Prism.highlightAll();
+        //@ts-ignore
+        Prism.highlightAll();
     }, []);
     const contentList = [
         { type: 'question', content: '请帮我分析这一段代码是否有错误', userName: 'zhoudan' },
@@ -77,7 +78,7 @@ import {TableOfContents} from './tokens';
             </div>
         </div>
     )
-}*/
+}
 
 export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<TableOfContents.IHeading> | null> {
     /**
@@ -92,7 +93,7 @@ export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<T
     }
 
     render(): JSX.Element | null {
-        return <div>23333</div>
+        return <MindChat></MindChat>
     }
 
     readonly _placeholderHeadline: string;
