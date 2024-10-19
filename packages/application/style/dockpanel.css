@@ -36,13 +36,14 @@
 }
 
 .right_dock_panel-container {
-  padding: 11px 16px;
+  padding: 16px;
 }
 
 .right_dock_panel-container #jp-main-dock-panel {
   background: #fff;
   border-radius: 10px;
   height: 100%;
+  overflow: hidden;
 }
 
 .right_dock_panel-container .lm-DockPanel-widget {

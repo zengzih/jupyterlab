@@ -6,11 +6,15 @@
 .jp-PropertyInspector {
   display: flex;
   color: var(--jp-ui-font-color1);
-  background: var(--jp-layout-color1);
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #f0f4f7!important;
 }
 
 .jp-PropertyInspector-content {
   flex-grow: 1;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .jp-PropertyInspector-placeholder {

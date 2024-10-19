@@ -70,9 +70,9 @@ async function activateTOC(
   const toc = new TableOfContentsPanel(translator ?? undefined);
   toc.title.icon = tocIcon;
   toc.title.caption = trans.__('ai Table of Contents');
-  toc.id = 'table-of-contents';
+  toc.id = 'ai';
   toc.node.setAttribute('role', 'region');
-  toc.node.setAttribute('aria-label', trans.__('Table of Contents section'));
+  toc.node.setAttribute('aria-label', trans.__('ai'));
 
   app.commands.addCommand(CommandIDs.displayH1Numbering, {
     label: trans.__('Show first-level heading number'),

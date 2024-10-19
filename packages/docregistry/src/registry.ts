@@ -1361,7 +1361,6 @@ export namespace DocumentRegistry {
   ): IFileType {
     translator = translator || nullTranslator;
     const trans = translator?.load('jupyterlab');
-
     return {
       ...getFileTypeDefaults(translator),
       name: 'directory',

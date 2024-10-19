@@ -116,6 +116,7 @@
   box-sizing: border-box;
   &.ai_panel {
     background: url("https://commonresource-1252524126.cdn.xiaoeknow.com/image/m26f5q6r0ey7.png") no-repeat;
+    background-size: 100%;
     .jp-TableOfContents-tree {
       height: 100%;
     }
@@ -188,7 +189,6 @@
 }
 .work-file.list-view .list-item .name-icon .name {
   margin-left: 8px;
-  width: 116px;
   height: 20px;
   font-weight: 400;
   font-size: 14px;
@@ -293,6 +293,14 @@
               color: #FFFFFF;
             }
           }
+          &.answer {
+            .inner_text {
+              background: #FFFFFF;
+              border-radius: 10px 10px 10px 10px;
+              padding: 20px;
+              box-sizing: border-box;
+            }
+          }
           .user_name {
             font-weight: 400;
             font-size: 12px;
@@ -302,12 +310,6 @@
             font-style: normal;
             text-transform: none;
             margin-bottom: 8px;
-          }
-          &.answer {
-            background: #FFFFFF;
-            border-radius: 10px 10px 10px 10px;
-            padding: 20px;
-            box-sizing: border-box;
           }
         }
       }

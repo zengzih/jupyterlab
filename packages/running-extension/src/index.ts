@@ -102,6 +102,12 @@ const sidebarPlugin: JupyterFrontEndPlugin<IRunningSessionSidebar> = {
       trans.__('Running Sessions section')
     );
 
+    const runningContainer = document.createElement('div');
+    runningContainer.className = 'runningContainer';
+    const [toolbarChild, contentChild] = running.node.children;
+    runningContainer.appendChild(toolbarChild);
+    runningContainer.appendChild(contentChild);
+    running.node.appendChild(runningContainer);
     // Let the application restorer track the running panel for restoration of
     // application state (e.g. setting the running panel as the current side bar
     // widget).

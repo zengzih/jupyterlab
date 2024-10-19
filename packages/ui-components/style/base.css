@@ -205,3 +205,33 @@
 .jp-ThemedContainer select {
   box-sizing: border-box;
 }
+
+/* 搜索输入框样式优化 */
+jp-search::part(root) {
+  font-weight: 400;
+  font-size: 14px;
+  color: #84888B;
+  line-height: 22px;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  border-radius: 5px;
+  border: 1px solid #E0E1E3;
+  height: 36px;
+  position: relative;
+  padding-left: 38px;
+  background: #fff;
+}
+jp-search::part(control) {
+  padding-left: 0;
+  font-size: 14px;
+  color: #84888B;
+}
+jp-search::part(end) {
+  position: absolute;
+  left: 0;
+}
+
+jp-search svg {
+  width: 18px;
+}

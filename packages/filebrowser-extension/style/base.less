@@ -1,0 +1,29 @@
+/*-----------------------------------------------------------------------------
+| Copyright (c) Jupyter Development Team.
+| Distributed under the terms of the Modified BSD License.
+|----------------------------------------------------------------------------*/
+
+#filebrowser.jp-mod-restoring .jp-DirListing-content {
+  display: none;
+}
+
+.jp-FileBrowser-filterBox {
+  padding: 0;
+  flex: 0 0 auto;
+}
+.lm-TabBar-tab[data-id='filebrowser'] {
+  .lm-TabBar-tabIcon {
+    height: 22px;
+    background: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f3ae0otc.png) no-repeat center;
+    background-size: 22px;
+    svg {
+      display: none;
+    }
+  }
+  &.lm-mod-current {
+    .lm-TabBar-tabIcon {
+      background: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f38d04xt.png) no-repeat center;
+      background-size: 22px;
+    }
+  }
+}

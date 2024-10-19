@@ -301,6 +301,12 @@
     },
     {
       "path": "../workspaces-extension"
+    },
+    {
+      "path": "../ai"
+    },
+    {
+      "path": "../ai-extension"
     }
   ]
 }

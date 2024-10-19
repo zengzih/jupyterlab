@@ -830,7 +830,6 @@ export class RunningSessions
           managers.items().forEach(manager => manager.refreshRunning())
       })
     );
-
     managers.items().forEach(manager => this.addSection(managers, manager));
     managers.added.connect(this.addSection, this);
   }

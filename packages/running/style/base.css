@@ -15,7 +15,7 @@
   font-size: var(--jp-ui-font-size1);
 }
 
-.jp-RunningSessions > .jp-SidePanel-toolbar::part(positioning-region) {
+.jp-RunningSessions .jp-SidePanel-toolbar::part(positioning-region) {
   justify-content: flex-end;
 }
 
@@ -226,4 +226,21 @@ span.jp-RunningSessions-icon > svg {
 .jp-RunningSessions-section:not(.jp-mod-empty)
   ~ .jp-SearchableSessions-emptyIndicator {
   display: none;
+}
+
+.jp-RunningSessions {
+  padding: 16px;
+  box-sizing: border-box;
+  background: #F0F4F7!important;
+}
+
+.jp-RunningSessions .runningContainer {
+  background: #fff;
+  border-radius: 10px;
+  height: 100%;
+  padding: 20px;
+}
+
+.jp-RunningSessions .runningContainer .jp-SidePanel-toolbar {
+  width: 100%;
 }

@@ -487,7 +487,7 @@ const browserWidget: JupyterFrontEndPlugin<void> = {
       )
     );
 
-    labShell.add(browser, 'left', { rank: 100, type: 'File Browser' });
+    labShell.add(browser, 'left', { rank: 10, type: 'File Browser' });
 
     commands.addCommand(CommandIDs.toggleBrowser, {
       label: trans.__('File Browser'),

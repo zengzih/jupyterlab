@@ -406,8 +406,10 @@ namespace Private {
 
     if (state.hasPreferred) {
       node.appendChild(breadcrumbs[Crumb.Home]);
+      console.log(separators[0]);
       node.appendChild(separators[0]);
     } else {
+      console.log(separators[0]);
       node.appendChild(separators[0]);
     }
 

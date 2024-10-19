@@ -20,6 +20,8 @@ import {
 } from '@jupyterlab/translation';
 import { extensionIcon } from '@jupyterlab/ui-components';
 
+import { Panel } from '@lumino/widgets';
+
 const PLUGIN_ID = '@jupyterlab/extensionmanager-extension:plugin';
 
 /**
@@ -55,6 +57,10 @@ const plugin: JupyterFrontEndPlugin<void> = {
     const createView = () => {
       const v = new ExtensionsPanel({ model, translator: translator! });
       v.id = 'extensionmanager.main-view';
+      console.log(v.layout);
+      const panel = new Panel()
+      panel.addClass('extensionContainer_test')
+      panel.addWidget(v);
       v.title.icon = extensionIcon;
       v.title.caption = trans.__('Extension Manager');
       v.node.setAttribute('role', 'region');
@@ -63,12 +69,15 @@ const plugin: JupyterFrontEndPlugin<void> = {
         restorer.add(v, v.id);
       }
       shell.add(v, 'left', { rank: 1000 });
-
-      return v;
+      /*const extensionContainer = document.createElement('div');
+      extensionContainer.className = 'extensionContainer';
+      Array.from(v.node.children).forEach(child => extensionContainer.appendChild(child));
+      v.node.appendChild(extensionContainer);*/
+      return panel;
     };
 
     // Create a view by default, so it can be restored when loading the workspace.
-    let view: ExtensionsPanel | null = createView();
+    let view: ExtensionsPanel | null | Panel = createView();
 
     // If the extension is enabled or disabled,
     // add or remove it from the left area.

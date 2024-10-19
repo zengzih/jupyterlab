@@ -2,3 +2,16 @@
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
+.lm-TabBar-tab[data-id='ai'] .lm-TabBar-tabIcon {
+  height: 22px;
+  background: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239eykw03gh.png) no-repeat center;
+  background-size: 22px;
+}
+.lm-TabBar-tab[data-id='ai'] .lm-TabBar-tabIcon svg {
+  display: none;
+}
+.lm-TabBar-tab[data-id='ai'].lm-mod-current .lm-TabBar-tabIcon {
+  background: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239eykw04io.png) no-repeat center;
+  background-size: 22px;
+}
+/*# sourceMappingURL=base.css.map */

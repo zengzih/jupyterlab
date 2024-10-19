@@ -31,6 +31,7 @@ const MindChat = (): JSX.Element | null =>  {
                 ]
             }, userName: 'zhoudan' }
     ];
+    const baseUrl = 'https://commonresource-1252524126.cdn.xiaoeknow.com/image/'
     return (
         <div className='mind-chat__wrapper'>
             <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m26fk2j40ml7.png' className={'bg_cover'} />
@@ -39,7 +40,7 @@ const MindChat = (): JSX.Element | null =>  {
                     {
                         contentList.map((row: any, index: number) => (<div key={index} className={'qa_content-list_item'}>
                             <div className={'head_portrait'}>
-                                <img src='https://commonresource-1252524126.cdn.xiaoeknow.com/image/m27cfdgg0ulr.png'/>
+                                <img src={ row.type === 'question' ? `${baseUrl}m27cfdgg0ulr.png` : `${baseUrl}m27cfdga01hb.png` }  />
                             </div>
                             <div className={`content ${row.type}`}>
                                 <div className={'user_name'}>{ row.userName }</div>

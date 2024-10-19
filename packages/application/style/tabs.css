@@ -73,7 +73,7 @@
 
 .lm-DockPanel-tabBar .lm-TabBar-tab:not(.lm-mod-current):focus-visible::after,
 .lm-TabPanel-tabBar .lm-TabBar-tab:not(.lm-mod-current):focus-visible::after {
-  border-bottom-color: var(--accent-fill-focus);
+  /*border-bottom-color: var(--accent-fill-focus);*/
 }
 
 .lm-DockPanel-tabBar .lm-TabBar-tab:hover:not(.lm-mod-current),
@@ -89,7 +89,7 @@
   bottom: 0;
   left: calc(-1 * var(--jp-border-width));
   width: calc(100% + 2 * var(--jp-border-width));
-  border-bottom: var(--jp-border-width) solid var(--jp-border-color1);
+  /*border-bottom: var(--jp-border-width) solid var(--jp-border-color1);*/
 }
 
 .lm-DockPanel-tabBar .lm-TabBar-tab:first-child,
@@ -187,4 +187,38 @@
   min-width: var(--jp-private-horizontal-tab-width);
   padding: 0 10px;
   transform: translateX(-40%) translateY(-58%);
+}
+
+.lm-DockPanel-tabBar[data-orientation='horizontal'] {
+  height: 40px!important;
+  background: #DDE5E7;
+  margin-left: -5px;
+  margin-top: -5px;
+  padding: 0 4px;
+}
+
+#jp-main-dock-panel .lm-TabBar-content .lm-TabBar-tab {
+  height: 36px!important;
+  border-radius: 10px 10px 0 0;
+  color: #040B13!important;
+  padding: 0 20px;
+  /*width: auto!important;*/
+  border: 0;
+  background: #DDE5E7;
+}
+#jp-main-dock-panel .lm-TabBar-content .lm-TabBar-tab.jp-mod-current {
+  background: #fff!important;
+}
+#jp-main-dock-panel .lm-TabBar-content .lm-TabBar-tab::before {
+  display: none;
+}
+.lm-DockPanel-tabBar .lm-TabBar-tabIcon.ffy1wk1 {
+  display: none;
+}
+.lm-TabBar-tab .lm-TabBar-tabCloseIcon.fvaq30 {
+  margin-left: 12px;
+}
+
+.lm-DockPanel-tabBar .lm-TabBar-tab:not(.lm-mod-current)::after {
+  display: none;
 }

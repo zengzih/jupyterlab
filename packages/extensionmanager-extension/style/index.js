@@ -8,3 +8,4 @@ import '@jupyterlab/ui-components/style/index.js';
 import '@jupyterlab/apputils/style/index.js';
 import '@jupyterlab/application/style/index.js';
 import '@jupyterlab/extensionmanager/style/index.js';
+import './base.css'

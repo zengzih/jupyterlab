@@ -328,3 +328,8 @@
   font-weight: 600;
   color: var(--jp-ui-font-color0);
 }
+
+#jp-left-stack {
+  padding: 20px;
+  box-sizing: border-box;
+}

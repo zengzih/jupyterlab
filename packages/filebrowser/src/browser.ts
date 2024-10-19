@@ -104,9 +104,9 @@ export class FileBrowser extends SidePanel {
         });
       },
       useFuzzyFilter: true,
-      placeholder: this._trans.__('Filter files by name'),
+      placeholder: this._trans.__('请输入关键词搜索'),
       forceRefresh: false,
-      showIcon: false,
+      showIcon: true,
       inputRef: this._fileFilterRef
     });
     searcher.addClass(FILTERBOX_CLASS);
@@ -124,12 +124,17 @@ export class FileBrowser extends SidePanel {
     });
     this.listing.addClass(LISTING_CLASS);
 
-    this.mainPanel.addWidget(this.crumbs);
+    this.mainPanel.addWidget(this.toolbar)
     this.mainPanel.addWidget(this.filterToolbar);
+    this.mainPanel.addWidget(this.crumbs);
     this.mainPanel.addWidget(this.listing);
 
-    this.addWidget(this.mainPanel);
 
+    const panel = new Panel();
+    panel.addClass('browser_custom-container-panel');
+    panel.addWidget(this.mainPanel);
+
+    this.addWidget(panel);
     if (options.restore !== false) {
       void model.restore(this.id);
     }
