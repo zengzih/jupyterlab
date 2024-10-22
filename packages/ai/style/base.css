@@ -76,11 +76,12 @@
 }
 .jp-TableOfContents .jp-SidePanel-content {
   overflow-y: hidden !important;
-  padding: 11px 16px;
-  background: #f0f2f5;
+  padding: 0!important;
+  background: #fff;
 }
 .jp-TableOfContents-tree {
   margin: 4px;
+  height: 100%;
 }
 .jp-TableOfContents-content {
   padding: 0;
@@ -104,20 +105,29 @@
   text-overflow: ellipsis;
   overflow-x: hidden;
 }
-.user_custom-container-panel {
+#ai {
+  background: url("https://commonresource-1252524126.cdn.xiaoeknow.com/image/m26f5q6r0ey7.png") no-repeat;
+  background-size: 100%;
+  background-color: transparent;
+}
+#ai .jp-SidePanel-content {
+  padding: 20px;
+  background: transparent;
+}
+/*#ai {
   border-radius: 10px;
   height: 100%;
   background: #fff;
   padding: 20px;
   box-sizing: border-box;
-}
-.user_custom-container-panel.ai_panel {
-  background: url("https://commonresource-1252524126.cdn.xiaoeknow.com/image/m26f5q6r0ey7.png") no-repeat;
-  background-size: 100%;
-}
-.user_custom-container-panel.ai_panel .jp-TableOfContents-tree {
-  height: 100%;
-}
+  &.ai_panel {
+    background: url("https://commonresource-1252524126.cdn.xiaoeknow.com/image/m26f5q6r0ey7.png") no-repeat;
+    background-size: 100%;
+    .jp-TableOfContents-tree {
+      height: 100%;
+    }
+  }
+}*/
 .user_custom-container-panel .user_panel-container .search_layout {
   display: flex;
   justify-content: space-between;
@@ -261,7 +271,14 @@
   transform: translateX(-50%);
 }
 .mind-chat__wrapper .qa_content {
+  height: 100%;
   position: relative;
+}
+.mind-chat__wrapper .qa_content-list {
+  height: calc(100% - 100px);
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .mind-chat__wrapper .qa_content-list_item {
   display: flex;
@@ -272,6 +289,7 @@
   height: 30px;
   border-radius: 50%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .mind-chat__wrapper .qa_content-list_item .head_portrait img {
   width: 100%;
@@ -287,6 +305,9 @@
   font-weight: 400;
   font-size: 14px;
   color: #FFFFFF;
+}
+.mind-chat__wrapper .qa_content-list_item .content.question .inner_text .code_content {
+  color: #fff;
 }
 .mind-chat__wrapper .qa_content-list_item .content.answer .inner_text {
   background: #FFFFFF;
@@ -304,22 +325,117 @@
   text-transform: none;
   margin-bottom: 8px;
 }
-.mind-chat__wrapper .send_message_content {
+.mind-chat__wrapper .qa_content-list_item .content .code_content {
+  /*pre {
+              font-family: inherit;
+              white-space: pre-wrap;
+              word-wrap: break-word;
+            }
+            .pre_code_container {
+              //background: rgb(13, 13, 13);
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              border-radius: 6px;
+
+              .language_action {
+                padding: 8px 16px;
+                box-sizing: border-box;
+                background: rgb(47, 47, 47);
+                color: rgb(180, 180, 180);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 36px;
+
+                .action {
+                  display: flex;
+                  align-items: center;
+                  height: 36px;
+
+
+                  button {
+                    height: 24px;
+                    font-size: 12px;
+                    cursor: pointer;
+                    display: flex;
+                    outline: none;
+                    border: 0;
+                    background: transparent;
+                    color: rgb(180, 180, 180);
+                    align-items: center;
+
+                    svg {
+                      height: 16px;
+                      color: rgb(180, 180, 180);
+                      font-size: 12px;
+                    }
+
+                    &:hover {
+                      background: rgb(57, 57, 57);
+                    }
+                  }
+                }
+              }
+
+              .code_body {
+                padding: 16px;
+                box-sizing: border-box;
+
+                .\!whitespace-pre {
+                  white-space: pre !important;
+                }
+
+                code {
+                  white-space: normal;
+                  word-break: break-all;
+                }
+              }
+            }*/
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .contain-inline-size {
+  display: contents;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .bg-token-sidebar-surface-primary {
+  background: transparent;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content p {
+  margin-bottom: 0.5rem;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content p:first-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .copy_code {
+  right: 0.5rem;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .code-body {
+  background: #1B223E;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .code-body code {
+  background: #1B223E;
+}
+.mind-chat__wrapper .qa_content-list_item .content .code_content .text-token-text-secondary {
+  background: #283156;
+  color: #B3BAD6;
+}
+.mind-chat__wrapper .send_message_wrapper {
   position: absolute;
   width: 100%;
-  height: 94px;
+  bottom: 20px;
+  left: 0;
+  padding: 20px;
+}
+.mind-chat__wrapper .send_message_wrapper .send_message_content {
   background: #FFFFFF;
   border-radius: 10px 10px 10px 10px;
   border: 1px solid #E0E1E3;
   overflow: hidden;
-  bottom: 0;
-  left: 0;
+  min-height: 94px;
 }
-.mind-chat__wrapper .send_message_content .message_textarea_inner {
+.mind-chat__wrapper .send_message_wrapper .send_message_content .message_textarea_inner {
   width: 100%;
   height: 100%;
 }
-.mind-chat__wrapper .send_message_content .message_textarea_inner textarea {
+.mind-chat__wrapper .send_message_wrapper .send_message_content .message_textarea_inner textarea {
   width: 100%;
   height: 100%;
   outline: none;
@@ -328,13 +444,13 @@
   overflow: auto;
   padding: 14px 16px;
 }
-.mind-chat__wrapper .send_message_content .send_action {
+.mind-chat__wrapper .send_message_wrapper .send_message_content .send_action {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 36px;
+  right: 36px;
   cursor: pointer;
 }
-.mind-chat__wrapper .send_message_content .send_action img {
+.mind-chat__wrapper .send_message_wrapper .send_message_content .send_action img {
   width: 18px;
   height: 18px;
 }

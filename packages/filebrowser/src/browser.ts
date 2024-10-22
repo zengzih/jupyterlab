@@ -130,11 +130,11 @@ export class FileBrowser extends SidePanel {
     this.mainPanel.addWidget(this.listing);
 
 
-    const panel = new Panel();
+    /*const panel = new Panel();
     panel.addClass('browser_custom-container-panel');
-    panel.addWidget(this.mainPanel);
+    panel.addWidget(this.mainPanel);*/
 
-    this.addWidget(panel);
+    this.addWidget(this.mainPanel);
     if (options.restore !== false) {
       void model.restore(this.id);
     }

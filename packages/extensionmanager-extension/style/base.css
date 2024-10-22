@@ -1,13 +1,6 @@
 .jp-extensionmanager-view {
-    padding: 16px;
-    box-sizing: border-box;
-    background: #F0F4F7!important;
-}
-
-.jp-extensionmanager-view .extensionContainer {
-    border-radius: 10px;
-    background: #fff;
     padding: 20px;
     box-sizing: border-box;
-    height: 100%;
+    background: #fff;
+    border-radius: 10px;
 }

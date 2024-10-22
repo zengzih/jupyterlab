@@ -227,16 +227,25 @@ export class NotebookTools extends Widget implements INotebookTools {
         this._onActiveCellMetadataChanged,
         this
       );
+      this.getActiveCellSource(activeCell);
     }
     for (const widget of this._toolChildren()) {
       MessageLoop.sendMessage(widget, NotebookTools.ActiveCellMessage);
     }
   }
 
+  getActiveCellSource(activeCell: any) {
+    const { sharedModel: { source } } = activeCell;
+    console.log('getActiveCellSourcesource', source);
+    //@ts-ignore
+    window.postMessage({ action: 'activeCellSourceChanged', source }, '*');
+  }
+
   /**
    * Handle a change in the selection.
    */
   private _onSelectionChanged(): void {
+    debugger
     for (const widget of this._toolChildren()) {
       MessageLoop.sendMessage(widget, NotebookTools.SelectionMessage);
     }

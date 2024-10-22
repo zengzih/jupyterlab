@@ -37,13 +37,13 @@ export class TableOfContentsPanel extends SidePanel {
     this._treeview.addClass('jp-TableOfContents-tree');
     // this.content.addWidget(this._treeview);
 
-    const containerPanel = new Panel();
-    containerPanel.addClass('user_custom-container-panel');
-    containerPanel.addClass('ai_panel')
+    // const containerPanel = new Panel();
+    // containerPanel.addClass('user_custom-container-panel');
+    // containerPanel.addClass('ai_panel')
 
     // containerPanel.addWidget(this._title);
-    containerPanel.addWidget(this._treeview);
-    this.content.addWidget(containerPanel);
+    // containerPanel.addWidget(this._treeview);
+    this.content.addWidget(this._treeview);
   }
 
   /**

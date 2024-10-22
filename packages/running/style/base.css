@@ -229,9 +229,10 @@ span.jp-RunningSessions-icon > svg {
 }
 
 .jp-RunningSessions {
-  padding: 16px;
+  padding: 20px;
   box-sizing: border-box;
-  background: #F0F4F7!important;
+  background: #fff;
+  border-radius: 10px;
 }
 
 .jp-RunningSessions .runningContainer {

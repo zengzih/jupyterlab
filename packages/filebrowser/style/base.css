@@ -37,7 +37,7 @@
 .jp-FileBrowser-filterToolbar.jp-Toolbar {
   border-bottom: none;
   height: auto;
-  margin: 0 12px 6px;
+  margin: 0 0 6px;
   box-shadow: none;
   padding: 0;
 }
@@ -354,19 +354,18 @@
   outline: none;
 }
 /* 自定义样式 */
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel {
+.jp-FileBrowser .jp-SidePanel-content {
   background: #fff;
   border-radius: 10px;
   height: 100%;
   padding: 20px;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-toolbar.jp-Toolbar {
-  padding: 0 20px 20px;
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-toolbar.jp-Toolbar {
+  padding: 0 0 20px;
   box-sizing: border-box;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-BreadCrumbs {
+.jp-FileBrowser .jp-SidePanel-content .jp-BreadCrumbs {
   margin: 0;
-  padding: 20px;
   padding-top: 0;
   padding-bottom: 0;
   font-size: 14px;
@@ -374,10 +373,10 @@
   display: flex;
   align-items: center;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-BreadCrumbs .jp-BreadCrumbs-home svg {
+.jp-FileBrowser .jp-SidePanel-content .jp-BreadCrumbs .jp-BreadCrumbs-home svg {
   display: none;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-BreadCrumbs .jp-BreadCrumbs-home {
+.jp-FileBrowser .jp-SidePanel-content .jp-BreadCrumbs .jp-BreadCrumbs-home {
   background-size: 16px;
   background-image: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f07h09ax.png);
   background-repeat: no-repeat;
@@ -387,10 +386,10 @@
   height: 16px;
   margin-right: 4px;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing {
-  padding: 20px;
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing {
+  padding: 20px 0;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-header {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-header {
   height: 40px;
   box-shadow: none;
   border-top: 1px solid #E0E1E3;
@@ -398,13 +397,13 @@
   font-size: 14px;
   color: #5E6673;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-header .jp-DirListing-headerItem {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-header .jp-DirListing-headerItem {
   height: 100%;
   align-items: center;
   padding: 0;
   font-weight: 400;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-toolbar.jp-Toolbar {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-toolbar.jp-Toolbar {
   margin: 0;
 }
 .jp-FileBrowser-toolbar.jp-Toolbar .jp-Toolbar-item svg {
@@ -427,15 +426,15 @@
 .jp-FileBrowser-toolbar > .jp-Toolbar-item[data-jp-item-name='refresh'] .jp-ToolbarButtonComponent {
   background-image: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f4ee0k6w.png);
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-item.jp-mod-selected {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-item.jp-mod-selected {
   background: #E5EDFA;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-content {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-content {
   width: calc(100% + 40px);
   margin-left: -20px;
   overflow: auto;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-item {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-item {
   font-weight: 400;
   font-size: 14px;
   color: #040B13;
@@ -447,20 +446,20 @@
   box-sizing: border-box;
   display: flex;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-item .jp-DirListing-itemIcon svg {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-item .jp-DirListing-itemIcon svg {
   width: 20px;
   height: 20px;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-item[data-file-type='directory'] .jp-DirListing-itemIcon svg {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-item[data-file-type='directory'] .jp-DirListing-itemIcon svg {
   display: none;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-listing .jp-DirListing-item[data-file-type='directory'] .jp-DirListing-itemIcon {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-listing .jp-DirListing-item[data-file-type='directory'] .jp-DirListing-itemIcon {
   background-size: 16px;
   background-image: url(https://commonresource-1252524126.cdn.xiaoeknow.com/image/m239f07h09ax.png);
   background-repeat: no-repeat;
   background-position: center;
 }
-.jp-FileBrowser .jp-SidePanel-content .browser_custom-container-panel .jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
+.jp-FileBrowser .jp-SidePanel-content .jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
   width: 36px;
   height: 16px;
   background: #1564FF;
