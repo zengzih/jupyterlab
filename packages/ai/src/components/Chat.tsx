@@ -198,7 +198,7 @@ class App extends Component<NonNullable<unknown>, AppState> {
         this.setState({ selectionText })
       }
     });
-    
+
     document.addEventListener('click', (e: any)=> {
       const { target: { dataset } } = e;
       if (dataset.type === 'copy') {
@@ -319,23 +319,23 @@ class App extends Component<NonNullable<unknown>, AppState> {
         streamMessages: [...prevState.streamMessages, newQuestion, newAnswer]
       }),
       () => {
-        // return this.reset();
-        // receiveStream(questionMessage, (stream: any)=> {
-        //   const {
-        //     data: { answer, end }
-        //   } = stream;
-        //   if (!end) {
-        //      return this.appendStreamedData(answer);
-        //   }
-        // })
-        streamTest.forEach(stream => {
+        this.reset();
+        receiveStream(questionMessage, (stream: any)=> {
           const {
             data: { answer, end }
           } = stream;
           if (!end) {
-            this.appendStreamedData(answer);
+             return this.appendStreamedData(answer);
           }
-        });
+        })
+        // streamTest.forEach(stream => {
+        //   const {
+        //     data: { answer, end }
+        //   } = stream;
+        //   if (!end) {
+        //     this.appendStreamedData(answer);
+        //   }
+        // });
       }
     );
   }
