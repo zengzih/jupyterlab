@@ -1,6 +1,6 @@
 import 'highlight.js/styles/monokai.css';
 //@ts-ignore
-import { receiveStream } from '../utils/eventStream.js';
+import { receiveStream, getHistoryStream } from '../utils/eventStream.js';
 import React, { ChangeEvent, Component } from 'react';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
@@ -149,6 +149,15 @@ const streamTest: StreamData[] = [
   }
 ];
 
+interface StreamMessages {
+  id: string;
+  type: 'question' | 'answer';
+  content: string;
+  userName: string;
+  isStreaming: boolean;
+  complete: boolean;
+}
+
 // 定义组件的状态类型
 // eslint-disable-next-line @typescript-eslint/naming-convention
 interface AppState {
@@ -158,14 +167,10 @@ interface AppState {
   isInsideCodeBlock: boolean;
   questionMsg: string;
   selectionText: string;
-  streamMessages: {
-    id: string;
-    type: 'question' | 'answer';
-    content: string;
-    userName: string;
-    isStreaming: boolean;
-    complete: boolean;
-  }[];
+  courseId: string;
+  clientid: string;
+  sessionId: string;
+  streamMessages: StreamMessages[];
 }
 
 class App extends Component<NonNullable<unknown>, AppState> {
@@ -180,7 +185,10 @@ class App extends Component<NonNullable<unknown>, AppState> {
       isInsideCodeBlock: false,
       questionMsg: '',
       streamMessages: [],
-      selectionText: ''
+      selectionText: '',
+      clientid: 'e5cd7e4891bf95d1d19206ce24a7b32e',
+      courseId: '1847592123333513218',
+      sessionId: 'cs9ocfmcbm67nqe01gn0'
     };
     this.baseUrl = 'https://commonresource-1252524126.cdn.xiaoeknow.com/image/';
     //@ts-ignore
@@ -191,16 +199,20 @@ class App extends Component<NonNullable<unknown>, AppState> {
     // });
     //@ts-ignore
     document.addEventListener('mouseup', (e: any) => {
-      const { target: { className } } = e;
+      const {
+        target: { className }
+      } = e;
       if (/cm-line|jp-InputPrompt/i.test(className)) {
         //@ts-ignore
         const selectionText = window.getSelection().toString();
-        this.setState({ selectionText })
+        this.setState({ selectionText });
       }
     });
 
-    document.addEventListener('click', (e: any)=> {
-      const { target: { dataset } } = e;
+    document.addEventListener('click', (e: any) => {
+      const {
+        target: { dataset }
+      } = e;
       if (dataset.type === 'copy') {
         let parent = e.target.parentNode;
         let preNode = null;
@@ -217,11 +229,53 @@ class App extends Component<NonNullable<unknown>, AppState> {
           const copyNode = preNode.querySelector('span.copy_code');
           if (copyNode) {
             copyNode.innerText = '已复制';
-            setTimeout(() => copyNode.innerText = 'copy', 3 * 1000);
+            setTimeout(() => (copyNode.innerText = 'copy'), 3 * 1000);
           }
         }
       }
-    })
+    });
+  }
+
+  get quesetion() {
+    return {
+      id: String(Date.now()) + Math.random(),
+      type: 'question' as const,
+      userName: '',
+      content: '',
+      // content:  marked(content),
+      isStreaming: false,
+      complete: true
+    };
+  }
+
+  get answer() {
+    return {
+      id: String(Date.now()) + Math.random(),
+      type: 'answer' as const,
+      userName: '',
+      content: '',
+      isStreaming: true,
+      complete: true
+    };
+  }
+
+  componentDidMount() {
+    const { clientid } = this.state;
+    getHistoryStream({ clientid, pageSize: 500, pageNum: 1 }).then(
+      ({ code, data, msg }) => {
+        const streamMessages: StreamMessages[] = [];
+        data.forEach(item => {
+          const { answer, question } = item; // userId
+          streamMessages.push(
+            ...[
+              { ...this.quesetion, content: marked(question) },
+              { ...this.answer, content: marked(answer) }
+            ]
+          );
+        });
+        this.setState({ streamMessages });
+      }
+    );
   }
 
   isCompleteMarkdown(buffer: string): boolean {
@@ -295,13 +349,15 @@ class App extends Component<NonNullable<unknown>, AppState> {
   handleSendMsg() {
     //@ts-ignore
     const questionMessage = this.state.questionMsg;
-    const { selectionText, questionMsg } = this.state;
-    const content = selectionText ? questionMsg + `\n\n\`\`\`python\n${selectionText}\n\`\`\`` : questionMsg;
+    const { selectionText, questionMsg, courseId, sessionId } = this.state;
+    const content = selectionText
+      ? questionMsg + `\n\n\`\`\`python\n${selectionText}\n\`\`\``
+      : questionMsg;
     const newQuestion = {
       id: String(Date.now()) + Math.random(),
       type: 'question' as const,
       userName: '',
-      content:  marked(content),
+      content: marked(content),
       isStreaming: false,
       complete: true
     };
@@ -319,15 +375,18 @@ class App extends Component<NonNullable<unknown>, AppState> {
         streamMessages: [...prevState.streamMessages, newQuestion, newAnswer]
       }),
       () => {
-        this.reset();
-        receiveStream(questionMessage, (stream: any)=> {
-          const {
-            data: { answer, end }
-          } = stream;
-          if (!end) {
-             return this.appendStreamedData(answer);
+        this.reset(); // questionMessage
+        receiveStream(
+          { question: questionMessage, courseId, sessionId },
+          (stream: any) => {
+            const {
+              data: { answer, end }
+            } = stream;
+            if (!end) {
+              return this.appendStreamedData(answer);
+            }
           }
-        })
+        );
         // streamTest.forEach(stream => {
         //   const {
         //     data: { answer, end }
@@ -368,34 +427,38 @@ class App extends Component<NonNullable<unknown>, AppState> {
                 <div className={`content ${row.type}`}>
                   <div className={'user_name'}>{row.userName}</div>
                   <div className={'inner_text'}>
-                    <div className={'code_content markdown prose w-full break-words dark:prose-invert'}>
-                        <div
-                          dangerouslySetInnerHTML={{ __html: row.content }}
-                        />
-                      </div>
+                    <div
+                      className={
+                        'code_content markdown prose w-full break-words dark:prose-invert'
+                      }
+                    >
+                      <div dangerouslySetInnerHTML={{ __html: row.content }} />
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className='send_message_wrapper'>
+        <div className="send_message_wrapper">
           <div className={'send_message_content'}>
             <div className={'message_textarea_inner'}>
-            <textarea
+              <textarea
                 value={this.state.questionMsg}
                 onInput={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                    this.handleSetQuestion(e.target)
+                  this.handleSetQuestion(e.target)
                 }
                 placeholder="请输入你的问题"
-            ></textarea>
+              ></textarea>
             </div>
             <div className={'send_action'} onClick={() => this.handleSendMsg()}>
               <img
-                  src={`${this.baseUrl}${
-                      this.state.questionMsg ? 'm2j4ma8h0sm2.png' : 'm26f5q6k0nad.png'
-                  }`}
-                  alt="dynamic"
+                src={`${this.baseUrl}${
+                  this.state.questionMsg
+                    ? 'm2j4ma8h0sm2.png'
+                    : 'm26f5q6k0nad.png'
+                }`}
+                alt="dynamic"
               />
             </div>
           </div>
